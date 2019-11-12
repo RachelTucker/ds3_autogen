@@ -34,7 +34,7 @@ fun Ds3Request.toRequestPath(): String {
     if (classification == Classification.amazons3) {
         return getAmazonS3RequestPath()
     }
-    if (classification == Classification.spectrads3) {
+    if (classification == Classification.spectrads3 || classification == Classification.spectrainternal) {
         return getSpectraDs3RequestPath()
     }
 
@@ -62,7 +62,7 @@ fun Ds3Request.getAmazonS3RequestPath(): String {
  * Creates the Go request path code for a SpectraS3 request
  */
 fun Ds3Request.getSpectraDs3RequestPath(): String {
-    if (classification != Classification.spectrads3) {
+    if (classification != Classification.spectrads3 && classification != Classification.spectrainternal) {
         return ""
     }
     if (resource == null) {
